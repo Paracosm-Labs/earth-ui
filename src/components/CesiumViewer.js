@@ -2,6 +2,7 @@ import React from 'react';
 import 'cesium/Source/Widgets/widgets.css';
 import * as Cesium from 'cesium';
 import CountriesData from './countriesData'; // Define the points of interest
+import PlayerStats from './playerStats'; // Define the points of interest
 
 window.CESIUM_BASE_URL = '/';
 
@@ -27,7 +28,7 @@ class CesiumViewer extends React.Component {
       // Hide the timeline
       timeline: false,
       // Hide the animation widget
-      // animation: false,
+      animation: false,
     });
     // Add the points of interest
     for (const point of CountriesData) {
@@ -76,11 +77,13 @@ class CesiumViewer extends React.Component {
   render() {
     // Render the container that will be used for the viewer
     return (
+      <div>
       <div
         className="cesiumContainer"
         ref={element => { this.cesiumContainer = element; }}
-        style={{ width: '100%', height: '100%', position: 'absolute' }}
+        className="h-100"
       />
+      </div>
     );
   }
 }

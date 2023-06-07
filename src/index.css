@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.bg{
+  background-color: #000;
+}
+
+.hud{background-color: #343434; min-height: 700px;
+color: #fff;}

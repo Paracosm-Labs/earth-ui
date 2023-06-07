@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Intro from './pages/intro';
+import Dashboard from './pages/dashboard';
 import CesiumViewer from './components/cesiumViewer';
 import AframeScene from './components/aframeScene';
 
@@ -10,9 +10,9 @@ function App() {
 
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<CesiumViewer />} />
+        <Route exact path="/" element={<Dashboard />} />
         <Route exact path="/aframe" element={<AframeScene />} />
-        <Route element={<CesiumViewer />} />
+        <Route element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
 
