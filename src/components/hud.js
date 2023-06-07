@@ -5,9 +5,12 @@ import { BounceLoader } from 'react-spinners';
 const Hud = () => {
   const [resources, setResources] = useState(0);
   const [units, setUnits] = useState([
-    { id: 1, name: 'Unit 1', image: 'https://dummyimage.com/80x80/000/777&text=Dapp1' },
-    { id: 2, name: 'Unit 2', image: 'https://dummyimage.com/80x80/000/fff&text=Dapp2' },
-    { id: 3, name: 'Unit 3', image: 'https://dummyimage.com/80x80/000/fff&text=Dapp3' },
+    { id: 1, name: 'Unit 1', image: 'https://dummyimage.com/120x100/000/777&text=Unit1' },
+    { id: 2, name: 'Unit 2', image: 'https://dummyimage.com/120x100/000/777&text=Unit2' },
+    { id: 3, name: 'Unit 3', image: 'https://dummyimage.com/120x100/000/777&text=Unit3' },
+    { id: 4, name: 'Unit 4', image: 'https://dummyimage.com/120x100/000/777&text=Unit4' },
+    { id: 5, name: 'Unit 5', image: 'https://dummyimage.com/120x100/000/777&text=Unit5' },
+    { id: 6, name: 'Unit 6', image: 'https://dummyimage.com/120x100/000/777&text=Unit6' },
     // Add more dummy units here
   ]);
   const [selectedUnit, setSelectedUnit] = useState(null);
@@ -50,19 +53,20 @@ const Hud = () => {
       <div className="info-panel mt-3">
         {selectedUnit ? (
           <div>
-            <h2>{selectedUnit.name}</h2>
-            <img src={selectedUnit.image} alt={selectedUnit.name} />
+            <small>Hiring {selectedUnit.name}...</small>
             {/* Render unit actions here */}
           </div>
         ) : (
           <p>No unit selected</p>
         )}
       </div>
-      <div className="unit-list row mt-3">
+      <div className="unit-list row mt-3 mx-1">
         {units.map(unit => (
-          <div className="col" key={unit.id} onClick={() => setSelectedUnit(unit)}>
-            <img src={unit.image} alt={unit.name} className="p-2" />
+          <div className="col mt-2" key={unit.id} onClick={() => setSelectedUnit(unit)}>
+          <button className="btn btn-outline-secondary w-100">
+            <img src={unit.image} alt={unit.name} className="" />
             <p>{unit.name}</p>
+          </button>
           </div>
         ))}
       </div>

@@ -41,6 +41,13 @@ code {
   border-radius: 30px 0px 0px 0px;
   }
 
+
+.unit-list{
+  overflow-x:auto;
+  max-height: 400px;
+}
+
+
 .spinner-container {
   display: flex;
   justify-content: center;
