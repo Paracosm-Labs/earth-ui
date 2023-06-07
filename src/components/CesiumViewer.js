@@ -11,8 +11,24 @@ Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOi
 class CesiumViewer extends React.Component {
   componentDidMount() {
     // Initialize the Cesium Viewer in the componentDidMount lifecycle method
-    this.viewer = new Cesium.Viewer(this.cesiumContainer);
-
+    this.viewer = new Cesium.Viewer(this.cesiumContainer, {
+      // Hide the base layer picker
+      baseLayerPicker: false,
+      // Use the OpenStreetMap imagery provider for the base layer
+      // imageryProvider: new Cesium.OpenStreetMapImageryProvider(),
+      // Hide the geocoder
+      geocoder: false,
+      // Hide the home button
+      homeButton: false,
+      // Hide the scene mode picker
+      // sceneModePicker: false,
+      // Hide the navigation help button
+      navigationHelpButton: false,
+      // Hide the timeline
+      timeline: false,
+      // Hide the animation widget
+      // animation: false,
+    });
     // Add the points of interest
     for (const point of CountriesData) {
       const [longitude, latitude] = point.position.split(',').map(Number);
@@ -46,9 +62,6 @@ class CesiumViewer extends React.Component {
 
   }
 };
-
-
-
 
   componentWillUnmount() {
     // Destroy the viewer and the event handler when the component is unmounted
