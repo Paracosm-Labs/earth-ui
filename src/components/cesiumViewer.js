@@ -29,6 +29,7 @@ class CesiumViewer extends React.Component {
       timeline: false,
       // Hide the animation widget
       animation: false,
+      shouldAnimate: true,
     });
     // Add the points of interest
     for (const point of CountriesData) {
@@ -61,8 +62,37 @@ class CesiumViewer extends React.Component {
     }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
 
 
+
   }
 };
+
+
+
+  handleButtonClick = () => {
+    // Coordinates for Queen's Park Savannah, Trinidad
+    const longitude = -61.1092;
+    const latitude = 10.6660;
+    const height = 900; // Adjust the height as needed
+
+    // Create a Cesium.Cartesian3 position
+    const position = Cesium.Cartesian3.fromDegrees(longitude, latitude, height);
+
+    // Create a Cesium.HeadingPitchRoll orientation
+    const heading = Cesium.Math.toRadians(45); // Adjust the heading as needed
+    const pitch = Cesium.Math.toRadians(-30); // Adjust the pitch as needed
+    const roll = 0;
+    const orientation = new Cesium.HeadingPitchRoll(heading, pitch, roll);
+
+    // Fly the camera to the position with the orientation
+    this.viewer.camera.flyTo({
+      destination: position,
+      orientation: {
+        heading: orientation.heading,
+        pitch: orientation.pitch,
+        roll: orientation.roll
+      }
+    });
+  };
 
   componentWillUnmount() {
     // Destroy the viewer and the event handler when the component is unmounted
@@ -77,12 +107,18 @@ class CesiumViewer extends React.Component {
   render() {
     // Render the container that will be used for the viewer
     return (
-      <div>
-      <div
-        className="cesiumContainer"
-        ref={element => { this.cesiumContainer = element; }}
-        className="h-100"
-      />
+      <div style={{ position: 'relative' }}>
+        <div
+          className="cesiumContainer"
+          ref={element => { this.cesiumContainer = element; }}
+          className="h-100"
+        />
+        <button className="btn btn-outline-info"
+          onClick={this.handleButtonClick} 
+          style={{ position: 'absolute', top: '10px', right: '50px' }}
+        >
+          Visit Trinidad & Tobago
+        </button>
       </div>
     );
   }
