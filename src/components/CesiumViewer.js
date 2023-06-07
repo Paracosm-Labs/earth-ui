@@ -1,6 +1,7 @@
 import React from 'react';
 import 'cesium/Source/Widgets/widgets.css';
 import * as Cesium from 'cesium';
+import CountriesData from './countriesData'; // Define the points of interest
 
 window.CESIUM_BASE_URL = '/';
 
@@ -12,17 +13,8 @@ class CesiumViewer extends React.Component {
     // Initialize the Cesium Viewer in the componentDidMount lifecycle method
     this.viewer = new Cesium.Viewer(this.cesiumContainer);
 
-    // Define the points of interest
-    const pointsOfInterest = [
-      { id: '1', position: "-61.222503, 10.691803", label: 'Trinidad and Tobago', logo:'/gttd.png' },
-      { id: '2', position: "84.124008, 28.394857", label: 'Nepal', logo:'/gttd.png' },
-      { id: '3', position: "-59.543198, 13.193887", label: 'Barbados', logo:'/gttd.png' },
-      { id: '4', position: "-74.297333, 4.570868", label: 'Colombia', logo:'/gttd.png' },
-      { id: '5', position: "5.291266, 52.132633", label: 'Netherlands', logo:'/gttd.png' },
-    ];
-
     // Add the points of interest
-    for (const point of pointsOfInterest) {
+    for (const point of CountriesData) {
       const [longitude, latitude] = point.position.split(',').map(Number);
       const entity = new Cesium.Entity({
         id: point.id,
