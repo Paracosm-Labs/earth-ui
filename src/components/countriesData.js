@@ -32,7 +32,7 @@ const countriesData = [
   { id: '30', position: "120.9842, 14.5995", label: 'Philippines', logo:'/gttd.png' },
   { id: '31', position: "108.2772, 14.0583", label: 'Vietnam', logo:'/gttd.png' },
   { id: '32', position: "77.2090, 28.6139", label: 'India', logo:'/gttd.png' },
-  { id: '33', position: "28.9784, 41.0082", label: 'Turkey', logo:'/gttd.png' },
+  { id: '33', position: "28.9784, 41.0082", label: 'Turkiye', logo:'/gttd.png' },
   { id: '34', position: "19.8187, 41.3275", label: 'Albania', logo:'/gttd.png' },
 ];
 
