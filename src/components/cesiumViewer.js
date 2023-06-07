@@ -69,7 +69,7 @@ class CesiumViewer extends React.Component {
 
 
   handleButtonClick = () => {
-    // Coordinates for Queen's Park Savannah, Trinidad
+    // Coordinates for game map in Trinidad
     const longitude = -61.1092;
     const latitude = 10.6660;
     const height = 900; // Adjust the height as needed
