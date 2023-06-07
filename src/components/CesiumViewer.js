@@ -12,23 +12,36 @@ class CesiumViewer extends React.Component {
     // Initialize the Cesium Viewer in the componentDidMount lifecycle method
     this.viewer = new Cesium.Viewer(this.cesiumContainer);
 
-    // Add a point of interest
-    const entity = new Cesium.Entity({
-      id: 'pointOfInterest',
-      position: Cesium.Cartesian3.fromDegrees(-75.59777, 40.03883), // Longitude and latitude
-      billboard: new Cesium.BillboardGraphics({
-        image: '/sorrel-logo.png', // Path to the image to use for the pin
-        color: Cesium.Color.WHITE,
-      }),
-      label: new Cesium.LabelGraphics({
-        text: 'Point of Interest',
-        pixelOffset: new Cesium.Cartesian2(0, -50), // Offset the label so it doesn't overlap with the pin
-      }),
-    });
+    // Define the points of interest
+    const pointsOfInterest = [
+      { id: '1', position: "-61.222503, 10.691803", label: 'Trinidad and Tobago', logo:'/gttd.png' },
+      { id: '2', position: "84.124008, 28.394857", label: 'Nepal', logo:'/gttd.png' },
+      { id: '3', position: "-59.543198, 13.193887", label: 'Barbados', logo:'/gttd.png' },
+      { id: '4', position: "-74.297333, 4.570868", label: 'Colombia', logo:'/gttd.png' },
+      { id: '5', position: "5.291266, 52.132633", label: 'Netherlands', logo:'/gttd.png' },
+    ];
+
+    // Add the points of interest
+    for (const point of pointsOfInterest) {
+      const [longitude, latitude] = point.position.split(',').map(Number);
+      const entity = new Cesium.Entity({
+        id: point.id,
+        position: Cesium.Cartesian3.fromDegrees(longitude, latitude),
+        billboard: new Cesium.BillboardGraphics({
+          image: point.logo, // Path to the image to use for the pin
+          color: Cesium.Color.WHITE,
+          scale: 0.2, // Adjust the scale of the image
+        }),
+        label: new Cesium.LabelGraphics({
+          text: point.label,
+          pixelOffset: new Cesium.Cartesian2(0, -50), // Offset the label so it doesn't overlap with the pin
+          scale: 0.4, // Adjust the scale of the image
+        }),
+      });
 
     this.viewer.entities.add(entity);
   }
-
+};
 
 
 
