@@ -13,9 +13,41 @@ code {
 }
 
 
-.bg{
-  background-color: #000;
+
+/* Track */
+::-webkit-scrollbar {
+  width: 8px; /* Set the width of the scrollbar */
 }
 
-.hud{background-color: #343434; min-height: 700px;
-color: #fff;}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; /* Set the color of the scrollbar handle */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Set the color of the scrollbar handle on hover */
+}
+
+.bg{
+  background-color: #000;
+  border-radius: 30px;
+}
+
+.hud{
+  background-color: #343434; 
+/*  min-height: 700px;*/
+  color: #fff;
+  border-radius: 30px 0px 0px 0px;
+  }
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.footer{
+  border-top: 2px solid #f28144;
+}
