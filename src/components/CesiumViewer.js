@@ -32,6 +32,18 @@ class CesiumViewer extends React.Component {
       });
 
     this.viewer.entities.add(entity);
+
+    // Add a click event handler
+    const handler = new Cesium.ScreenSpaceEventHandler(this.viewer.canvas);
+    handler.setInputAction((event) => {
+      const pickedObject = this.viewer.scene.pick(event.position);
+      if (Cesium.defined(pickedObject) && Cesium.defined(pickedObject.id)) {
+        // Redirect to the A-Frame scene for the clicked point of interest
+        window.location.href = `/aframe?location=${pickedObject.id.id}`;
+      }
+    }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
+
+
   }
 };
 
@@ -39,9 +51,12 @@ class CesiumViewer extends React.Component {
 
 
   componentWillUnmount() {
-    // Destroy the viewer when the component is unmounted
+    // Destroy the viewer and the event handler when the component is unmounted
     if (this.viewer) {
       this.viewer.destroy();
+    }
+    if (this.handler) {
+      this.handler.destroy();
     }
   }
 
