@@ -1,5 +1,8 @@
 import React from 'react';
+import 'cesium/Source/Widgets/widgets.css';
 import { Viewer } from 'cesium';
+
+window.CESIUM_BASE_URL = '/';
 
 class CesiumViewer extends React.Component {
   componentDidMount() {
