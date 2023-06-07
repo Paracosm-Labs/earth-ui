@@ -13,7 +13,6 @@ const Dashboard = () => {
         </div>
         <div className="col-md-3">
           <Hud />
-
         </div>
       </div>
       
