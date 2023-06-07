@@ -1,15 +1,12 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-// import Intro from './pages/introPage';
-// import Welcome from './pages/welcomePage';
-import CesiumViewer from './CesiumViewer';
-import AframeScene from './aframeScene';
+import Intro from './pages/intro';
+import CesiumViewer from './components/CesiumViewer';
+import AframeScene from './components/aframeScene';
 
 function App() {
   return (
-
-
 
     <BrowserRouter>
       <Routes>
