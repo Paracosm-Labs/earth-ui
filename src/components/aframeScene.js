@@ -8,12 +8,18 @@ class AframeScene extends React.Component {
     const location = urlParams.get('location');
 
     // Get the URL of the 360-degree image for this location
-    // This could be a static URL, or it could be dynamically generated based on the location
     const imageUrl = `/environments/${location}.jpg`;
 
     return (
       <a-scene>
         <a-sky src={imageUrl}></a-sky>
+        {/* Add a welcome message */}
+        <a-text
+          value={`Welcome to ${location}`}
+          position="0 2.5 -3"
+          align="center"
+          color="#FFFFFF"
+        ></a-text>
         {/* Add other elements to the scene here */}
       </a-scene>
     );
