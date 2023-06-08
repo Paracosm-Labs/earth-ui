@@ -5,7 +5,7 @@ import 'aframe-extras';
 
 const LocationScene = () => {
   return (
-    <a-scene>
+    <a-scene inspector="url: https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js">
       <a-assets>
         <img id="skyTexture" src="/environments/1.jpg" />
       </a-assets>
@@ -13,7 +13,7 @@ const LocationScene = () => {
       <a-sky src="#skyTexture"></a-sky>
 
       <a-entity
-        environment="preset: forest; groundTexture: walkernoise; groundColor: #552811; dressing: mushrooms;  dressingAmount: 500"
+        environment="preset: contact; groundTexture: walkernoise; groundColor: #552811; dressing: mushrooms;  dressingAmount: 500"
       >
 
       </a-entity>
