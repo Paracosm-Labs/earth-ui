@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Offcanvas, Button } from 'react-bootstrap';
+import { Offcanvas } from 'react-bootstrap';
 import { BounceLoader } from 'react-spinners';
 
 const Hud = () => {
@@ -34,13 +34,13 @@ const Hud = () => {
       <div className="minimap mt-3 p-5 pt-3">
         {/* Render minimap here */}
         <img src="/sorrel-logo.png" alt="Minimap" className="rounded-circle" width="100px"/><br/>
-        Earth Communications Uplink
+        Sorrel Communications Uplink
       </div>
       <div className="resource-counter">
         Resources: {resources}
       </div>
       <div className="mt-3">
-        <Button className="btn btn-outline-success" onClick={() => setShowWallet(true)}>Show Wallet</Button>
+        <button type="button" className="btn btn-outline-success" onClick={() => setShowWallet(true)}>Show Wallet</button>
         <Offcanvas show={showWallet} onHide={() => setShowWallet(false)} placement="end" title="Wallet">
           {loading && 
             <div className="spinner-container">
