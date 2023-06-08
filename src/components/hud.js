@@ -5,12 +5,12 @@ import { BounceLoader } from 'react-spinners';
 const Hud = () => {
   const [resources, setResources] = useState(0);
   const [units, setUnits] = useState([
-    { id: 1, name: 'Unit 1', image: 'https://dummyimage.com/90x60/000/777&text=Unit1' },
-    { id: 2, name: 'Unit 2', image: 'https://dummyimage.com/90x60/000/777&text=Unit2' },
-    { id: 3, name: 'Unit 3', image: 'https://dummyimage.com/90x60/000/777&text=Unit3' },
-    { id: 4, name: 'Unit 4', image: 'https://dummyimage.com/90x60/000/777&text=Unit4' },
-    { id: 5, name: 'Unit 5', image: 'https://dummyimage.com/90x60/000/777&text=Unit5' },
-    { id: 6, name: 'Unit 6', image: 'https://dummyimage.com/90x60/000/777&text=Unit6' },
+    { id: 1, name: 'Growth & Sustainability', image: '/img/alex.jpg' },
+    { id: 2, name: 'Governance & Strategy', image: '/img/michelle.jpg' },
+    { id: 3, name: 'Entertainment', image: '/img/javier.jpg' },
+    { id: 4, name: 'Toursim', image: '/img/marcus.jpg' },
+    { id: 5, name: 'Business', image: '/img/jessica.jpg' },
+    { id: 6, name: 'Education', image: '/img/sarah.jpg' },
     // Add more dummy units here
   ]);
   const [selectedUnit, setSelectedUnit] = useState(null);
@@ -40,7 +40,9 @@ const Hud = () => {
         Resources: {resources}
       </div>
       <div className="mt-3">
-        <button type="button" className="btn btn-outline-success" onClick={() => setShowWallet(true)}>Show Wallet</button>
+        <button type="button" className="btn btn-outline-success m-1" >Objectives</button>
+        <button type="button" className="btn btn-outline-success  m-1" onClick={() => setShowWallet(true)}>Show Wallet</button>
+        <button type="button" className="btn btn-outline-success m-1" >Budget</button>
         <Offcanvas show={showWallet} onHide={() => setShowWallet(false)} placement="end" title="Wallet">
           {loading && 
             <div className="spinner-container">
@@ -53,19 +55,19 @@ const Hud = () => {
       <div className="info-panel mt-3">
         {selectedUnit ? (
           <div>
-            <small>Hiring {selectedUnit.name}...</small>
+            <small>Connecting to {selectedUnit.name} AIA...</small>
             {/* Render unit actions here */}
           </div>
         ) : (
-          <small>No unit selected</small>
+          <small>No team selected</small>
         )}
       </div>
       <div className="unit-list row mt-3 mx-1">
         {units.map(unit => (
-          <div className="col mt-2" key={unit.id} onClick={() => setSelectedUnit(unit)}>
+          <div className="col-12 mt-2" key={unit.id} onClick={() => setSelectedUnit(unit)}>
           <button className="btn btn-outline-secondary w-100">
-            <img src={unit.image} alt={unit.name} className="" />
-            <small>{unit.name}</small>
+            <img src={unit.image} alt={unit.name} className="rounded-circle" height="62"/>
+            <br/><small>{unit.name}</small>
           </button>
           </div>
         ))}
