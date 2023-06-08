@@ -16,8 +16,8 @@ class AframeScene extends React.Component {
     const imageUrl = `/environments/${locationId}.jpg`;
 
     return (
-    <div className="container-fluid game">
-      <div className="row">
+    <div className="game">
+      <div className="row m-0">
         <div className="col-9 m-auto" style={{ height: '700px', overflow: 'hidden' }}>
           <a-scene embedded inspector="url: https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js">
         <a-assets>

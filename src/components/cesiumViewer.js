@@ -124,7 +124,15 @@ class CesiumViewer extends React.Component {
            
           style={{ position: 'absolute', top: '60px', right: '50px' }}
         >
-          Visit Location
+          Visit Explorable Location
+        </button>
+        </a>
+        <a href="/aframe?location=1">
+        <button className="btn btn-outline-info"
+           
+          style={{ position: 'absolute', top: '110px', right: '50px' }}
+        >
+          Visit a 360 Location
         </button>
         </a>
       </div>

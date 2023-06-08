@@ -44,11 +44,11 @@ code {
 
 .unit-list{
   overflow-x:auto;
-  max-height: 400px;
+  max-height: 320px;
 }
 
 
-.game{overflow-x: hidden;}
+.game{overflow: hidden;}
 
 .spinner-container {
   display: flex;
