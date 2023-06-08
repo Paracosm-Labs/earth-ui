@@ -41,7 +41,7 @@ const Hud = () => {
       </div>
       <div className="mt-3">
         <button type="button" className="btn btn-outline-success m-1" >Objectives</button>
-        <button type="button" className="btn btn-outline-success  m-1" onClick={() => setShowWallet(true)}>Show Wallet</button>
+        <button type="button" className="btn btn-outline-success  m-1" onClick={() => setShowWallet(true)}>Wallet</button>
         <button type="button" className="btn btn-outline-success m-1" >Budget</button>
         <Offcanvas show={showWallet} onHide={() => setShowWallet(false)} placement="end" title="Wallet">
           {loading && 
