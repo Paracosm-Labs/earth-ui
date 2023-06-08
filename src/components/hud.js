@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Offcanvas } from 'react-bootstrap';
-import { BounceLoader } from 'react-spinners';
+import { BounceLoader, ScaleLoader } from 'react-spinners';
 
 const Hud = () => {
   const [resources, setResources] = useState(0);
@@ -33,13 +33,18 @@ const Hud = () => {
     <div className="hud text-center mx-1 h-100">
       <div className="minimap mt-3 p-5 pt-3">
         {/* Render minimap here */}
-        <img src="/sorrel-logo.png" alt="Minimap" className="rounded-circle" width="100px"/><br/>
+        
         {selectedUnit ? (
-          <div>
-            <small>Connecting to {selectedUnit.name} AIA...</small>
+          <div className="m-auto">
+            <ScaleLoader color="#109e77" size={80} /><br/>
+            <small>Connecting to...<br/>{selectedUnit.name} AIA</small>
             {/* Render unit actions here */}
           </div>
-        ) : (<small>Sorrel Communications Uplink</small>)}
+        ) : (<>
+          <img src="/sorrel-logo.png" alt="Minimap" className="rounded-circle" width="100px"/><br/>
+          <small>Sorrel AIA Team Communications</small>
+          </>
+        )}
 
       </div>
       <div className="resource-counter">
@@ -48,7 +53,7 @@ const Hud = () => {
       <div className="mt-3">
         <button type="button" className="btn btn-outline-success m-1" >Objectives</button>
         <button type="button" className="btn btn-outline-success  m-1" onClick={() => setShowWallet(true)}>Wallet</button>
-        <button type="button" className="btn btn-outline-success m-1" >Budget</button>
+        <button type="button" className="btn btn-outline-success m-1" >Resources</button>
         <Offcanvas show={showWallet} onHide={() => setShowWallet(false)} placement="end" title="Wallet">
           {loading && 
             <div className="spinner-container">
