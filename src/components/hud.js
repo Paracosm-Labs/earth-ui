@@ -65,7 +65,7 @@ const Hud = () => {
       <div className="unit-list row mt-5 mx-1">
       <h6>Team</h6>
         {units.map(unit => (
-          <div className="col-4 mt-2" key={unit.id} onClick={() => setSelectedUnit(unit)}>
+          <div className="col-4 mt-3" key={unit.id} onClick={() => setSelectedUnit(unit)}>
           <button className="btn btn-outline-secondary w-100">
             <img src={unit.image} alt={unit.name} className="rounded-circle" height="62"/>
             <br/><small>{unit.name}</small>
