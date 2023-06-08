@@ -31,14 +31,15 @@ const LaunchBoxScene = () => {
           wasd-controls-enabled="true"
         ></a-entity>
       </a-entity>
-      <a-entity position="0 -1 -3">
-        <a-plane position="0 0 -0.01" width="2" height="2" color="black"></a-plane>
-        <a-text value={`Units: ${units}`} position="-1.5 0.5 0" color="white"></a-text>
-        <a-text value={`Transport: ${transport}`} position="-1.5 0 0" color="white"></a-text>
-        <a-text value={`Structures: ${structures}`} position="-1.5 -0.5 0" color="white"></a-text>
-      </a-entity>
+<a-entity position="2.08 1.64 -3" rotation="" gamepad-controls="" trackpad-controls="" keyboard-controls="" touch-controls=""><a-plane position="0 0 -0.01" width="2" height="2" color="black" material="" geometry=""></a-plane>
+<a-text value="Units: 0" position="-.5 0.5 0" color="white" text=""></a-text>
+<a-text value="Transport: 0" position="-.5 0 0" color="white" text=""></a-text>
+<a-text value="Structures: 0" position="-.5 -0.5 0" color="white" text=""></a-text></a-entity>
     </a-scene>
   );
 };
 
 export default LaunchBoxScene;
+
+
+
