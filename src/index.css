@@ -48,6 +48,8 @@ code {
 }
 
 
+.game{overflow-x: hidden;}
+
 .spinner-container {
   display: flex;
   justify-content: center;
