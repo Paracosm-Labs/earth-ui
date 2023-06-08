@@ -34,8 +34,8 @@ class AframeScene extends React.Component {
           {/* Add other elements to the scene here */}
         </a-scene>
         {/* Add a link back to the globe */}
-        <a href="/" className="mb-5" style={{ position: 'absolute', bottom: '50px',left:'24%', color: '#d3d343', textDecoration: 'none' }}>
-          <h1 className="text-center">Return to Orbital Station</h1>
+        <a href="/" className="mb-5" style={{ position: 'absolute', bottom: '50px',left:'30%', color: '#e3d343', textDecoration: 'none' }}>
+          <button className="text-center btn btn-dark btn-lg m-3">Return to Orbital Station</button>
         </a>
         </div>
         <div className="col-3 text-white">
