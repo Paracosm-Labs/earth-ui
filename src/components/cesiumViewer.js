@@ -119,6 +119,14 @@ class CesiumViewer extends React.Component {
         >
           Visit Trinidad & Tobago
         </button>
+        <a href="/locale">
+        <button className="btn btn-outline-info"
+           
+          style={{ position: 'absolute', top: '60px', right: '50px' }}
+        >
+          Visit Location
+        </button>
+        </a>
       </div>
     );
   }
