@@ -13,8 +13,10 @@ const LocationScene = () => {
       <a-sky src="#skyTexture"></a-sky>
 
       <a-entity
-        environment="preset: starry; groundTexture: walkernoise; groundColor: #552811; dressing: mushrooms; ground:  canyon;  dressingAmount: 500"
-      ></a-entity>
+        environment="preset: forest; groundTexture: walkernoise; groundColor: #552811; dressing: mushrooms;  dressingAmount: 500"
+      >
+
+      </a-entity>
 
       <a-camera>
         <a-cursor></a-cursor>

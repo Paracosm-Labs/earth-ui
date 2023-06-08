@@ -17,7 +17,10 @@ class AframeScene extends React.Component {
     return (
       <div>
         <a-scene>
-          <a-sky src={imageUrl}  animation="property: rotation; to: 0 360 0; loop: true; dur: 100000"></a-sky>
+        <a-assets>
+          <img id="skyTexture" src={imageUrl} />
+        </a-assets>
+          <a-sky src="#skyTexture" animation="property: rotation; to: 0 360 0; loop: true; dur: 100000"></a-sky>
           {/* Add a welcome message */}
           <a-text
             value={`Welcome to ${location ? location.label : 'Unknown'}`}
