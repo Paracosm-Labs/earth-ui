@@ -34,7 +34,13 @@ const Hud = () => {
       <div className="minimap mt-3 p-5 pt-3">
         {/* Render minimap here */}
         <img src="/sorrel-logo.png" alt="Minimap" className="rounded-circle" width="100px"/><br/>
-        Sorrel Communications Uplink
+        {selectedUnit ? (
+          <div>
+            <small>Connecting to {selectedUnit.name} AIA...</small>
+            {/* Render unit actions here */}
+          </div>
+        ) : (<small>Sorrel Communications Uplink</small>)}
+
       </div>
       <div className="resource-counter">
         Resources: {resources}
@@ -51,16 +57,6 @@ const Hud = () => {
           }
           <iframe src="https://wallet.sorrelbanq.org/wallet" title="Wallet" style={{ width: '100%', height: '100%' }} onLoad={handleLoad} />
         </Offcanvas>
-      </div>
-      <div className="info-panel mt-3">
-        {selectedUnit ? (
-          <div>
-            <small>Connecting to {selectedUnit.name} AIA...</small>
-            {/* Render unit actions here */}
-          </div>
-        ) : (
-          <small>No team selected</small>
-        )}
       </div>
       <div className="unit-list row mt-3 mx-1">
         {units.map(unit => (
