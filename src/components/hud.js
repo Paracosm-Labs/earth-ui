@@ -7,7 +7,7 @@ const Hud = () => {
   const [units, setUnits] = useState([
     { id: 1, name: 'Growth & Sustainability', image: '/img/alex.jpg' },
     { id: 2, name: 'Governance & Strategy', image: '/img/michelle.jpg' },
-    { id: 3, name: 'Entertainment', image: '/img/javier.jpg' },
+    { id: 3, name: 'Media & Entertainment', image: '/img/javier.jpg' },
     { id: 4, name: 'Toursim', image: '/img/marcus.jpg' },
     { id: 5, name: 'Business', image: '/img/jessica.jpg' },
     { id: 6, name: 'Education', image: '/img/sarah.jpg' },
@@ -32,7 +32,6 @@ const Hud = () => {
   return (
     <div className="hud text-center mx-1 h-100">
       <div className="minimap mt-3 p-5 pt-3">
-        {/* Render minimap here */}
         
         {selectedUnit ? (
           <div className="m-auto">
@@ -63,9 +62,10 @@ const Hud = () => {
           <iframe src="https://wallet.sorrelbanq.org/wallet" title="Wallet" style={{ width: '100%', height: '100%' }} onLoad={handleLoad} />
         </Offcanvas>
       </div>
-      <div className="unit-list row mt-3 mx-1">
+      <div className="unit-list row mt-5 mx-1">
+      <h6>Team</h6>
         {units.map(unit => (
-          <div className="col-12 mt-2" key={unit.id} onClick={() => setSelectedUnit(unit)}>
+          <div className="col-4 mt-2" key={unit.id} onClick={() => setSelectedUnit(unit)}>
           <button className="btn btn-outline-secondary w-100">
             <img src={unit.image} alt={unit.name} className="rounded-circle" height="62"/>
             <br/><small>{unit.name}</small>
