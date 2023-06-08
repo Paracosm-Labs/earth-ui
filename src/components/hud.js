@@ -5,12 +5,12 @@ import { BounceLoader } from 'react-spinners';
 const Hud = () => {
   const [resources, setResources] = useState(0);
   const [units, setUnits] = useState([
-    { id: 1, name: 'Unit 1', image: 'https://dummyimage.com/100x60/000/777&text=Unit1' },
-    { id: 2, name: 'Unit 2', image: 'https://dummyimage.com/100x60/000/777&text=Unit2' },
-    { id: 3, name: 'Unit 3', image: 'https://dummyimage.com/100x60/000/777&text=Unit3' },
-    { id: 4, name: 'Unit 4', image: 'https://dummyimage.com/100x60/000/777&text=Unit4' },
-    { id: 5, name: 'Unit 5', image: 'https://dummyimage.com/100x60/000/777&text=Unit5' },
-    { id: 6, name: 'Unit 6', image: 'https://dummyimage.com/100x60/000/777&text=Unit6' },
+    { id: 1, name: 'Unit 1', image: 'https://dummyimage.com/90x60/000/777&text=Unit1' },
+    { id: 2, name: 'Unit 2', image: 'https://dummyimage.com/90x60/000/777&text=Unit2' },
+    { id: 3, name: 'Unit 3', image: 'https://dummyimage.com/90x60/000/777&text=Unit3' },
+    { id: 4, name: 'Unit 4', image: 'https://dummyimage.com/90x60/000/777&text=Unit4' },
+    { id: 5, name: 'Unit 5', image: 'https://dummyimage.com/90x60/000/777&text=Unit5' },
+    { id: 6, name: 'Unit 6', image: 'https://dummyimage.com/90x60/000/777&text=Unit6' },
     // Add more dummy units here
   ]);
   const [selectedUnit, setSelectedUnit] = useState(null);
@@ -57,7 +57,7 @@ const Hud = () => {
             {/* Render unit actions here */}
           </div>
         ) : (
-          <p>No unit selected</p>
+          <small>No unit selected</small>
         )}
       </div>
       <div className="unit-list row mt-3 mx-1">
