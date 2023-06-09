@@ -3,7 +3,7 @@ import { Offcanvas } from 'react-bootstrap';
 import { BounceLoader, ScaleLoader } from 'react-spinners';
 
 const Hud = () => {
-  const [resources, setResources] = useState(0);
+  const [resources, setResources] = useState(30000);
   const [units, setUnits] = useState([
     { id: 1, name: 'Growth & Sustainability', image: '/img/alex.jpg' },
     { id: 2, name: 'Governance & Strategy', image: '/img/michelle.jpg' },
