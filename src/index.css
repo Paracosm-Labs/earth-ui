@@ -51,6 +51,10 @@ code {
 
 .game{overflow: hidden;}
 
+.game .window {height:700px;}
+
+.hud {background-color: red;}
+
 .spinner-container {
   display: flex;
   justify-content: center;
