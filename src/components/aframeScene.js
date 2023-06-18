@@ -53,8 +53,9 @@ class AframeScene extends React.Component {
           {/* Add other elements to the scene here */}
 
 
-          <a-entity id="rig" position="0 1.6 0" aframe-injected movement-controls="speed: 0.6" class="touch-controls">
-            <a-entity camera look-controls="touchEnabled: true" wasd-controls-enabled="false">
+         {/* <a-entity id="rig" position="0 1.6 0" aframe-injected movement-controls="speed: 0.6" class="touch-controls"> */}
+          <a-entity id="rig" position="0 1.6 0">
+            <a-entity camera look-controls="touchEnabled: false" wasd-controls-enabled="false">
 
               <a-entity id="hud1" position="0 -1 -2"> 
                   {/* Add a welcome message */}
@@ -85,20 +86,22 @@ class AframeScene extends React.Component {
         
         </div>
         <div className="col-12 text-white text-center controller">
-          {/*<Hud />*/} 
-          <div className="row">
-            <div className="col text-start">
+          <div className="row m-2">
+            <div className="col ">
               <button onClick={this.handleNextLocation} className="btn btn-outline-secondary btn-lg m-3">Next Location</button>
             </div>
             <div className="col text-center">
               <a href="/"><button className="btn btn-outline-secondary btn-lg m-3">Return to Orbital Station</button></a>
             </div>
-            <div className="col text-end">
+            <div className="col ">
               <button onClick={this.handleMenu} className="btn btn-outline-secondary btn-lg m-3">Menu</button>
             </div>
           </div>
         </div>
       </div>
+
+      <Hud />
+
       </div>
     );
   }
