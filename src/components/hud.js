@@ -53,7 +53,7 @@ const Hud = () => {
         <button type="button" className="btn btn-outline-success m-1" >Objectives</button>
         <button type="button" className="btn btn-outline-success  m-1" onClick={() => setShowWallet(true)}>Wallet</button>
         <button type="button" className="btn btn-outline-success m-1" >Resources</button>
-        <Offcanvas style={{width: `440px`}} show={showWallet} onHide={() => setShowWallet(false)} placement="end" title="Wallet">
+        <Offcanvas class="dapp" style={{width: `440px`}} show={showWallet} onHide={() => setShowWallet(false)} placement="end" title="Wallet">
           {loading && 
             <div className="spinner-container">
               <BounceLoader color="#109e77" size={100} />

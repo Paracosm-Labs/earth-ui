@@ -15,6 +15,10 @@ class AframeScene extends React.Component {
     // Get the URL of the 360-degree image for this location
     const imageUrl = `/environments/${locationId}.jpg`;
 
+    const handleNextLocation = () => {
+      alert("Coming Soon....")
+    }
+
     const handleMenu = () => {
       alert("Coming Soon....")
     }
@@ -67,7 +71,7 @@ class AframeScene extends React.Component {
           {/*<Hud />*/} 
           <div className="row">
             <div className="col text-start">
-              <button onClick={handleMenu} className="btn btn-outline-secondary btn-lg m-3">Navigation</button>
+              <button onClick={handleNextLocation} className="btn btn-outline-secondary btn-lg m-3">Navigation</button>
             </div>
             <div className="col text-center">
               <a href="/"><button className="btn btn-outline-secondary btn-lg m-3">Return to Orbital Station</button></a>
