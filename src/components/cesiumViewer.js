@@ -67,6 +67,24 @@ class CesiumViewer extends React.Component {
 };
 
 
+  handle360LocationClick = () => {
+    // Array of environment filenames
+    const environments = [
+      '1', '11', '111', '112', '113', '114', '14', '17', '19',
+      '2', '21', '214', '22', '24', '3', '31', '32', '33',
+      '4', '5', '6', '7'
+    ];
+
+    // Select a random environment
+    const randomEnvironment = environments[Math.floor(Math.random() * environments.length)];
+
+    // Redirect to the A-Frame scene for the random environment
+    window.location.href = `/aframe?location=${randomEnvironment}`;
+  };
+
+
+
+
 
   handleButtonClick = () => {
     // Coordinates for game map in Trinidad
@@ -127,14 +145,12 @@ class CesiumViewer extends React.Component {
           Visit Explorable Location
         </button>
         </a>
-        <a href="/aframe?location=1">
         <button className="btn btn-outline-info"
-           
+          onClick={this.handle360LocationClick}
           style={{ position: 'absolute', top: '110px', right: '50px' }}
         >
           Visit a 360 Location
         </button>
-        </a>
       </div>
     );
   }

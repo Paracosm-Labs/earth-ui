@@ -32,9 +32,20 @@ class AframeScene extends React.Component {
             color="#323232"
           ></a-text>
           {/* Add other elements to the scene here */}
+
+          <a-entity id="hud" position="0 0 -3">
+            <a-text value="Resources: 30000" position="-1 1 0"></a-text>
+            <a-entity id="unit-list" position="0 -1 0">
+              <a-image src="/img/alex.jpg" position="-1 0 0" event-set__click="_event: click; scale: 1.2 1.2 1"></a-image>
+              <a-text value="Growth & Sustainability" position="-1 -0.5 0"></a-text>
+              {/* Add more units here */}
+            </a-entity>
+          </a-entity>
+
+
         </a-scene>
         {/* Add a link back to the globe */}
-        <a href="/" className="mb-5" style={{ position: 'absolute', bottom: '50px',left:'30%', color: '#e3d343', textDecoration: 'none' }}>
+        <a href="/" className="mb-5" style={{ position: 'absolute', bottom: '50px',left:'41%', color: '#e3d343', textDecoration: 'none' }}>
           <button className="text-center btn btn-dark btn-lg m-3">Return to Orbital Station</button>
         </a>
         </div>
