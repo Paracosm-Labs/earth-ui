@@ -5,12 +5,12 @@ import { BounceLoader, ScaleLoader } from 'react-spinners';
 const Hud = () => {
   const [resources, setResources] = useState(30000);
   const [units, setUnits] = useState([
-    { id: 1, name: 'Growth & Sustainability', image: '/img/alex.jpg' },
-    { id: 2, name: 'Governance & Strategy', image: '/img/michelle.jpg' },
-    { id: 3, name: 'Media & Entertainment', image: '/img/javier.jpg' },
-    { id: 4, name: 'Tourism', image: '/img/marcus.jpg' },
-    { id: 5, name: 'Business', image: '/img/jessica.jpg' },
-    { id: 6, name: 'Education', image: '/img/sarah.jpg' },
+    { id: 1, name: 'Alex' ,  role: 'Growth & Sustainability', image: '/img/alex.jpg' },
+    { id: 2, name: 'Michelle' ,  role: 'Governance & Strategy', image: '/img/michelle.jpg' },
+    { id: 3, name: 'Javier' ,  role: 'Media & Entertainment', image: '/img/javier.jpg' },
+    { id: 4, name: 'Marcus' ,  role: 'Tourism', image: '/img/marcus.jpg' },
+    { id: 5, name: 'Jessica' ,  role: 'Business', image: '/img/jessica.jpg' },
+    { id: 6, name: 'Sarah' ,  role: 'Education', image: '/img/sarah.jpg' },
     // Add more dummy units here
   ]);
   const [selectedUnit, setSelectedUnit] = useState(null);
@@ -24,6 +24,24 @@ const Hud = () => {
     }, 1000);
     return () => clearInterval(interval);
   }, []);
+
+
+  const handleUnitClick = async (unit) => {
+    setSelectedUnit(unit);
+
+    // Create a new audio object
+    const audio = new Audio(`/audio/${unit.name.toLowerCase()}.mp3`);
+
+    try {
+      // Try to play the audio file
+      await audio.play();
+    } catch (error) {
+      // If an error occurs, show an alert
+      alert(`${unit.name} is not available at the moment. Please try again later...`);
+    }
+
+  };
+
 
   const handleLoad = () => {
     setLoading(false);
@@ -66,7 +84,7 @@ const Hud = () => {
       <h6 className="mt-4">Team</h6>
       <div className="unit-list row mt-2 mx-1">
         {units.map(unit => (
-          <div className="col-6 mt-3" key={unit.id} onClick={() => setSelectedUnit(unit)}>
+          <div className="col-6 mt-3" key={unit.id} onClick={() => handleUnitClick(unit)}>
           <button className="btn btn-outline-secondary w-100">
             <img src={unit.image} alt={unit.name} className="rounded-circle" height="62"/>
             <br/><small className="text-xs">{unit.name}</small>
