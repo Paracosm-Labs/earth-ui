@@ -10,6 +10,24 @@ class AframeScene extends React.Component {
     showHud: false
   };
 
+
+  componentDidUpdate(prevProps, prevState) {
+    // Check if the showHud state has changed
+    if (this.state.showHud !== prevState.showHud) {
+      // Get the VR button
+      const vrButton = document.querySelector('.a-enter-vr');
+
+      // If the off-canvas menu is open, hide the VR button
+      if (this.state.showHud) {
+        vrButton.style.display = 'none';
+      }
+      // If the off-canvas menu is closed, show the VR button
+      else {
+        vrButton.style.display = 'block';
+      }
+    }
+  }
+
   handleNextLocation = () => {
       // Array of environment filenames
       const environments = [
