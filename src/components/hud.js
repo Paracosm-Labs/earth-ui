@@ -8,7 +8,7 @@ const Hud = () => {
     { id: 1, name: 'Growth & Sustainability', image: '/img/alex.jpg' },
     { id: 2, name: 'Governance & Strategy', image: '/img/michelle.jpg' },
     { id: 3, name: 'Media & Entertainment', image: '/img/javier.jpg' },
-    { id: 4, name: 'Toursim', image: '/img/marcus.jpg' },
+    { id: 4, name: 'Tourism', image: '/img/marcus.jpg' },
     { id: 5, name: 'Business', image: '/img/jessica.jpg' },
     { id: 6, name: 'Education', image: '/img/sarah.jpg' },
     // Add more dummy units here
@@ -31,7 +31,7 @@ const Hud = () => {
 
   return (
     <div className="hud text-center mx-1 h-100">
-      <div className="minimap mt-3 p-5 pt-3">
+      <div className="minimap mt-1 p-5 pt-1">
         
         {selectedUnit ? (
           <div className="m-auto">
@@ -54,6 +54,7 @@ const Hud = () => {
         <button type="button" className="btn btn-outline-success  m-1" onClick={() => setShowWallet(true)}>Wallet</button>
         <button type="button" className="btn btn-outline-success m-1" >Resources</button>
         <Offcanvas className="dapp" show={showWallet} onHide={() => setShowWallet(false)} placement="end" title="Wallet">
+          <Offcanvas.Header closeButton className="btn-close-white"></Offcanvas.Header>
           {loading && 
             <div className="spinner-container">
               <BounceLoader color="#109e77" size={100} />
@@ -62,13 +63,13 @@ const Hud = () => {
           <iframe src="https://wallet.sorrelbanq.org/wallet" title="Wallet" style={{ width: '100%', height: '100%' }} onLoad={handleLoad} />
         </Offcanvas>
       </div>
-      <div className="unit-list row mt-5 mx-1">
-      <h6>Team</h6>
+      <h6 className="mt-4">Team</h6>
+      <div className="unit-list row mt-2 mx-1">
         {units.map(unit => (
-          <div className="col-4 mt-3" key={unit.id} onClick={() => setSelectedUnit(unit)}>
+          <div className="col-6 mt-3" key={unit.id} onClick={() => setSelectedUnit(unit)}>
           <button className="btn btn-outline-secondary w-100">
             <img src={unit.image} alt={unit.name} className="rounded-circle" height="62"/>
-            <br/><small>{unit.name}</small>
+            <br/><small className="text-xs">{unit.name}</small>
           </button>
           </div>
         ))}

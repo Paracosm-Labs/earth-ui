@@ -128,7 +128,7 @@ class AframeScene extends React.Component {
 
         <Offcanvas className="offcanvas-hud" show={this.state.showHud} onHide={this.handleClose} placement="end">
           <Offcanvas.Header closeButton className="btn-close-white">
-            <Offcanvas.Title>Hud</Offcanvas.Title>
+            {/* <Offcanvas.Title>Hud</Offcanvas.Title> */}
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Hud />

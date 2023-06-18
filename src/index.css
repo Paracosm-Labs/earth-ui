@@ -55,7 +55,7 @@ code {
 
 .dapp {width: 430px;}
 
-.offcanvas-hud, .hud {background-color: #19191a;}
+.offcanvas-hud, .hud, .dapp.offcanvas {background-color: #19191a;}
 
 .spinner-container {
   display: flex;
