@@ -56,7 +56,7 @@ code {
 
 
 
-/*.hud {background-color: red;}*/
+.offcanvas-hud, .hud {background-color: #19191a;}
 
 .spinner-container {
   display: flex;

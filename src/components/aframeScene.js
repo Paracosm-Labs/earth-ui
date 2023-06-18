@@ -2,8 +2,13 @@ import React from 'react';
 import 'aframe';
 import countriesData from './countriesData';
 import Hud from '../components/hud';
+import { Offcanvas } from 'react-bootstrap';
 
 class AframeScene extends React.Component {
+
+  state = {
+    showHud: false
+  };
 
   handleNextLocation = () => {
       // Array of environment filenames
@@ -23,9 +28,12 @@ class AframeScene extends React.Component {
 
 
   handleMenu = () => {
-    alert("Coming Soon....")
+    this.setState({ showHud: true });
   }
 
+  handleClose = () => {
+    this.setState({ showHud: false });
+  }
 
   render() {
     // Get the location from the URL parameters
@@ -86,7 +94,7 @@ class AframeScene extends React.Component {
         
         </div>
         <div className="col-12 text-white text-center controller">
-          <div className="row m-2">
+          <div className="row m-1">
             <div className="col ">
               <button onClick={this.handleNextLocation} className="btn btn-outline-secondary btn-lg m-3">Next Location</button>
             </div>
@@ -100,7 +108,14 @@ class AframeScene extends React.Component {
         </div>
       </div>
 
-      <Hud />
+        <Offcanvas className="offcanvas-hud" show={this.state.showHud} onHide={this.handleClose} placement="end">
+          <Offcanvas.Header closeButton className="btn-close-white">
+            <Offcanvas.Title>Hud</Offcanvas.Title>
+          </Offcanvas.Header>
+          <Offcanvas.Body>
+            <Hud />
+          </Offcanvas.Body>
+        </Offcanvas>
 
       </div>
     );
