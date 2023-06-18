@@ -18,7 +18,7 @@ class AframeScene extends React.Component {
     return (
     <div className="game">
       <div className="row m-0">
-        <div className="col-9 m-auto" style={{ height: '700px', overflow: 'hidden' }}>
+        <div className="col m-auto" style={{ height: '700px', overflow: 'hidden' }}>
           <a-scene embedded inspector="url: https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js">
         <a-assets>
           <img id="skyTexture" src={imageUrl} />
@@ -38,9 +38,9 @@ class AframeScene extends React.Component {
           <button className="text-center btn btn-dark btn-lg m-3">Return to Orbital Station</button>
         </a>
         </div>
-        <div className="col-3 text-white">
-          <Hud />
-        </div>
+        {/*<div className="col text-white d-sm-none d-xs-none">
+          <Hud /> 
+        </div>*/}
       </div>
       </div>
     );
