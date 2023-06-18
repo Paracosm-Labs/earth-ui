@@ -34,6 +34,11 @@ code {
   border-radius: 30px;
 }
 
+
+.col-12.cesium {
+min-height: 600px;
+}
+
 .hud{
 /*  background-color: #343434; */
 /*  min-height: 700px;*/
