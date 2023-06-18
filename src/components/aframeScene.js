@@ -33,13 +33,13 @@ class AframeScene extends React.Component {
           ></a-text>
           {/* Add other elements to the scene here */}
 
-          <a-entity id="hud1" position="0 2 -3">
-            <a-text value="Resources: 30000" position="5 1 0"></a-text>
+          <a-entity id="hud1" position="0 1 -3">
+            <a-text value="Resources: 30000" position="1.5 1 0"></a-text>
             <a-entity id="unit-list" position="5 -1 0">
               <a-image src="/img/alex.jpg" position="0 2 0" event-set__click="_event: click; scale: 0.2 0.2 0.5"></a-image>
-              <a-text value="Growth & Sustainability" position="-1 -0.5 0"></a-text>
+              <a-text value="Growth & Sustainability" position="-1.5 -0.5 0"></a-text>
               <a-image src="/img/javier.jpg" position="0 3 0" event-set__click="_event: click; scale: 0.2 0.2 0.5"></a-image>
-              <a-text value="Media & Entertainment" position="-1 -0.8 0"></a-text>
+              <a-text value="Media & Entertainment" position="-1.5 -0.8 0"></a-text>
               {/* Add more units here */}
             </a-entity>
           </a-entity>
@@ -52,10 +52,10 @@ class AframeScene extends React.Component {
           {/*<Hud />*/} 
           <div className="row">
             <div className="col text-start">
-              <button className="text-center btn btn-outline-secondary btn-lg m-3">Return to Orbital Station</button>
+              <button className="btn btn-outline-secondary btn-lg m-3">Return to Orbital Station</button>
             </div>
             <div className="col text-end">
-              <button className="btn btn-primary btn-lg m-3">Menu</button>
+              <button className="btn btn-outline-secondary btn-lg m-3">Menu</button>
             </div>
           </div>
         </div>
