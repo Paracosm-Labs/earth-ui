@@ -62,6 +62,15 @@ min-height: 600px;
 
 .offcanvas-hud, .hud, .dapp.offcanvas {background-color: #19191a;}
 
+.offcanvas-controller{background-color: transparent;}
+
+.offcanvas-controller  .dpad, .offcanvas-controller .actionpad {
+  background-color:#19191a;
+  padding: 15px;
+  border-radius: 50px 00px 50px 50px;
+  border: 1px solid #f28144;
+ }
+
 .spinner-container {
   display: flex;
   justify-content: center;

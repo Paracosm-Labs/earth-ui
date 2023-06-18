@@ -27,37 +27,39 @@ class GameController extends Component {
         </Offcanvas.Header>
         <Offcanvas.Body>
           <div className="row">
-            <div className="col">
-              <button
+            <div className="col-2 dpad">
+              <button className="btn btn-outline-secondary btn-lg m-2"
                 onMouseDown={() => this.handleMouseDown('onUp')}
                 onMouseUp={() => this.handleMouseUp('movingUp')}
               >
                 ▲
               </button>
-              <button
+              <button className="btn btn-outline-secondary btn-lg m-2"
                 onMouseDown={() => this.handleMouseDown('onLeft')}
                 onMouseUp={() => this.handleMouseUp('movingLeft')}
               >
                 ◀
               </button>
-              <button
+              <button className="btn btn-outline-secondary btn-lg m-2"
                 onMouseDown={() => this.handleMouseDown('onDown')}
                 onMouseUp={() => this.handleMouseUp('movingDown')}
               >
                 ▼
               </button>
-              <button
+              <button className="btn btn-outline-secondary btn-lg m-2"
                 onMouseDown={() => this.handleMouseDown('onRight')}
                 onMouseUp={() => this.handleMouseUp('movingRight')}
               >
                 ▶
               </button>
             </div>
-            <div className="col">
-              <button>A</button>
-              <button>B</button>
-              <button>C</button>
-              <button>D</button>
+            <div className="col-8">
+            </div>
+            <div className="col-2 actionpad">
+              <button className="btn btn-outline-secondary btn-lg m-2">A</button>
+              <button className="btn btn-outline-secondary btn-lg m-2">B</button>
+              <button className="btn btn-outline-secondary btn-lg m-2">C</button>
+              <button className="btn btn-outline-secondary btn-lg m-2">D</button>
             </div>
           </div>
         </Offcanvas.Body>

@@ -150,7 +150,7 @@ updateVrArButtonsDisplay = () => {
           <a-assets>
             <img id="skyTexture" src={imageUrl} />
           </a-assets>
-          <a-sky src="#skyTexture" animation="property: rotation; to: 0 360 0; loop: true; dur: 100000"></a-sky>
+          <a-sky src="#skyTexture" animation="property: rotation; to: 0 360 0; loop: true; dur: 300000"></a-sky>
 
           {/* Add other elements to the scene here */}
 
@@ -201,7 +201,7 @@ updateVrArButtonsDisplay = () => {
             </div>
             <div className="col text-center">
               <a href="/"><button className="btn btn-outline-secondary btn-lg m-3">Return to Orbital Station</button></a>
-              <button onClick={this.handleController} className="btn btn-outline-secondary btn-lg m-3">Controller</button>
+              <button onClick={this.handleController} className="btn btn-outline-secondary btn-lg m-3 d-none">Controller</button>
 
               
 
