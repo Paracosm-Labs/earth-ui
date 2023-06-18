@@ -53,6 +53,9 @@ code {
 
 .game .window {height:700px;}
 
+
+
+
 .hud {background-color: red;}
 
 .spinner-container {
@@ -62,6 +65,6 @@ code {
   height: 100vh;
 }
 
-.footer{
+.game .controller,  .footer{
   border-top: 2px solid #f28144;
 }

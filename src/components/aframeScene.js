@@ -15,6 +15,10 @@ class AframeScene extends React.Component {
     // Get the URL of the 360-degree image for this location
     const imageUrl = `/environments/${locationId}.jpg`;
 
+    const handleMenu = () => {
+      alert("Coming Soon....")
+    }
+
     return (
     <div className="game">
       <div className="row m-0">
@@ -24,25 +28,36 @@ class AframeScene extends React.Component {
             <img id="skyTexture" src={imageUrl} />
           </a-assets>
           <a-sky src="#skyTexture" animation="property: rotation; to: 0 360 0; loop: true; dur: 100000"></a-sky>
-          {/* Add a welcome message */}
-          <a-text
-            value={`Welcome to ${location ? location.label : 'Unknown'}`}
-            position="0 2.5 -3"
-            align="center"
-            color="#323232"
-          ></a-text>
+
           {/* Add other elements to the scene here */}
 
-          <a-entity id="hud1" position="0 1 -3">
-            <a-text value="Resources: 30000" position="1.5 1 0"></a-text>
-            <a-entity id="unit-list" position="5 -1 0">
-              <a-image src="/img/alex.jpg" position="0 2 0" event-set__click="_event: click; scale: 0.2 0.2 0.5"></a-image>
-              <a-text value="Growth & Sustainability" position="-1.5 -0.5 0"></a-text>
-              <a-image src="/img/javier.jpg" position="0 3 0" event-set__click="_event: click; scale: 0.2 0.2 0.5"></a-image>
-              <a-text value="Media & Entertainment" position="-1.5 -0.8 0"></a-text>
-              {/* Add more units here */}
+
+          <a-entity id="rig" position="0 1.6 0" aframe-injected movement-controls="speed: 0.6" class="touch-controls">
+            <a-entity camera look-controls="touchEnabled: true" wasd-controls-enabled="false">
+
+              <a-entity id="hud1" position="0 -1 -2"> 
+                  {/* Add a welcome message */}
+                  <a-text
+                    value={`Welcome to ${location ? location.label : 'Unknown'}`}
+                    position="0 2.5 -1"
+                    align="center"
+                    color="#323232"
+                  ></a-text>
+                  
+                  <a-entity id="unit-list" position="7 -1 -2">
+                    <a-text value="Resources: 30000" position="-1.5 4 0"></a-text>
+
+                    <a-image src="/img/alex.jpg" position="0 2 0" event-set__click="_event: click; "></a-image>
+                    <a-text value="Growth & Sustainability" position="-1.5 0.6 0"></a-text>
+                    <a-image src="/img/javier.jpg" position="0 3 0" event-set__click="_event: click; "></a-image>
+                    <a-text value="Media & Entertainment" position="-1.5 1 0"></a-text>
+                    {/* Add more units here */}
+                  </a-entity>
+                
+              </a-entity>
             </a-entity>
           </a-entity>
+
 
           </a-scene>
           {/* Add a link back to the globe */}
@@ -52,10 +67,13 @@ class AframeScene extends React.Component {
           {/*<Hud />*/} 
           <div className="row">
             <div className="col text-start">
-              <button className="btn btn-outline-secondary btn-lg m-3">Return to Orbital Station</button>
+              <button onClick={handleMenu} className="btn btn-outline-secondary btn-lg m-3">Navigation</button>
+            </div>
+            <div className="col text-center">
+              <a href="/"><button className="btn btn-outline-secondary btn-lg m-3">Return to Orbital Station</button></a>
             </div>
             <div className="col text-end">
-              <button className="btn btn-outline-secondary btn-lg m-3">Menu</button>
+              <button onClick={handleMenu} className="btn btn-outline-secondary btn-lg m-3">Menu</button>
             </div>
           </div>
         </div>
