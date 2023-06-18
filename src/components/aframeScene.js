@@ -4,6 +4,29 @@ import countriesData from './countriesData';
 import Hud from '../components/hud';
 
 class AframeScene extends React.Component {
+
+  handleNextLocation = () => {
+      // Array of environment filenames
+      const environments = [
+        '1', '11', '111', '112', '113', '114', '14', '17', '19',
+        '2', '21', '214', '22', '24', '3', '31', '32', '33',
+        '4', '5', '6', '7'
+      ];
+
+      // Select a random environment
+      const randomEnvironment = environments[Math.floor(Math.random() * environments.length)];
+
+      // Redirect to the A-Frame scene for the random environment
+      window.location.href = `/aframe?location=${randomEnvironment}`;
+    }
+
+
+
+  handleMenu = () => {
+    alert("Coming Soon....")
+  }
+
+
   render() {
     // Get the location from the URL parameters
     const urlParams = new URLSearchParams(window.location.search);
@@ -15,13 +38,7 @@ class AframeScene extends React.Component {
     // Get the URL of the 360-degree image for this location
     const imageUrl = `/environments/${locationId}.jpg`;
 
-    const handleNextLocation = () => {
-      alert("Coming Soon....")
-    }
 
-    const handleMenu = () => {
-      alert("Coming Soon....")
-    }
 
     return (
     <div className="game">
@@ -71,13 +88,13 @@ class AframeScene extends React.Component {
           {/*<Hud />*/} 
           <div className="row">
             <div className="col text-start">
-              <button onClick={handleNextLocation} className="btn btn-outline-secondary btn-lg m-3">Navigation</button>
+              <button onClick={this.handleNextLocation} className="btn btn-outline-secondary btn-lg m-3">Next Location</button>
             </div>
             <div className="col text-center">
               <a href="/"><button className="btn btn-outline-secondary btn-lg m-3">Return to Orbital Station</button></a>
             </div>
             <div className="col text-end">
-              <button onClick={handleMenu} className="btn btn-outline-secondary btn-lg m-3">Menu</button>
+              <button onClick={this.handleMenu} className="btn btn-outline-secondary btn-lg m-3">Menu</button>
             </div>
           </div>
         </div>
