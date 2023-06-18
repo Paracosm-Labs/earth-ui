@@ -20,9 +20,9 @@ class AframeScene extends React.Component {
       <div className="row m-0">
         <div className="col-12 m-auto text-center window">
           <a-scene embedded inspector="url: https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js">
-        <a-assets>
-          <img id="skyTexture" src={imageUrl} />
-        </a-assets>
+          <a-assets>
+            <img id="skyTexture" src={imageUrl} />
+          </a-assets>
           <a-sky src="#skyTexture" animation="property: rotation; to: 0 360 0; loop: true; dur: 100000"></a-sky>
           {/* Add a welcome message */}
           <a-text
@@ -34,22 +34,30 @@ class AframeScene extends React.Component {
           {/* Add other elements to the scene here */}
 
           <a-entity id="hud1" position="0 2 -3">
-            <a-text value="Resources: 30000" position="-1 1 0"></a-text>
-            <a-entity id="unit-list" position="0 -1 0">
-              <a-image src="/img/alex.jpg" position="-1 0 0" event-set__click="_event: click; scale: 1.2 1.2 1"></a-image>
+            <a-text value="Resources: 30000" position="5 1 0"></a-text>
+            <a-entity id="unit-list" position="5 -1 0">
+              <a-image src="/img/alex.jpg" position="0 2 0" event-set__click="_event: click; scale: 0.2 0.2 0.5"></a-image>
               <a-text value="Growth & Sustainability" position="-1 -0.5 0"></a-text>
+              <a-image src="/img/javier.jpg" position="0 3 0" event-set__click="_event: click; scale: 0.2 0.2 0.5"></a-image>
+              <a-text value="Media & Entertainment" position="-1 -0.8 0"></a-text>
               {/* Add more units here */}
             </a-entity>
           </a-entity>
 
-        </a-scene>
-        {/* Add a link back to the globe */}
+          </a-scene>
+          {/* Add a link back to the globe */}
         
         </div>
-        <div className="col-12 text-white text-center">
+        <div className="col-12 text-white text-center controller">
           {/*<Hud />*/} 
-        <button className="text-center btn btn-outline-secondary btn-lg m-3">Return to Orbital Station</button>
-        <button className="btn btn-dark btn-lg m-3">Menu</button>
+          <div className="row">
+            <div className="col text-start">
+              <button className="text-center btn btn-outline-secondary btn-lg m-3">Return to Orbital Station</button>
+            </div>
+            <div className="col text-end">
+              <button className="btn btn-primary btn-lg m-3">Menu</button>
+            </div>
+          </div>
         </div>
       </div>
       </div>
