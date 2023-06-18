@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Offcanvas } from 'react-bootstrap';
 import { BounceLoader, ScaleLoader } from 'react-spinners';
 
-const Hud = () => {
+const Hud = ({show, onHide}) => {
   const [resources, setResources] = useState(30000);
   const [units, setUnits] = useState([
     { id: 1, name: 'Alex' ,  role: 'Growth & Sustainability', image: '/img/alex.jpg' },
@@ -51,52 +51,66 @@ const Hud = () => {
   };
 
   return (
-    <div className="hud text-center mx-1 h-100">
-      <div className="minimap mt-1 p-5 pt-1">
-        
-        {selectedUnit && isLoading ? (
-          <div className="m-auto">
-            <ScaleLoader color="#109e77" size={80} /><br/>
-            <small>Connecting to...<br/>{selectedUnit.name} AIA</small>
-            {/* Render unit actions here */}
-          </div>
-        ) : (<>
-          <img src="/sorrel-logo.png" alt="Minimap" className="rounded-circle" width="100px"/><br/>
-          <small>Sorrel AIA Team Communications</small>
-          </>
-        )}
 
-      </div>
-      <div className="resource-counter">
-        Resources: {resources}
-      </div>
-      <div className="mt-3">
-        <button type="button" className="btn btn-outline-success m-1" >Objectives</button>
-        <button type="button" className="btn btn-outline-success  m-1" onClick={() => setShowWallet(true)}>Wallet</button>
-        <button type="button" className="btn btn-outline-success m-1" >Resources</button>
-        <Offcanvas className="dapp" show={showWallet} onHide={() => setShowWallet(false)} placement="end" title="Wallet">
-          <Offcanvas.Header closeButton className="btn-close-white"></Offcanvas.Header>
-          {loading && 
-            <div className="spinner-container">
-              <BounceLoader color="#109e77" size={100} />
+        <Offcanvas className="offcanvas-hud" show={show} onHide={onHide} placement="end" backdrop={false}>
+          <Offcanvas.Header closeButton className="btn-close-white">
+            {/* <Offcanvas.Title>Hud</Offcanvas.Title> */}
+          </Offcanvas.Header>
+          <Offcanvas.Body>
+
+            <div className="hud text-center mx-1 h-100">
+              <div className="minimap mt-1 p-5 pt-1">
+                
+                {selectedUnit && isLoading ? (
+                  <div className="m-auto">
+                    <ScaleLoader color="#109e77" size={80} /><br/>
+                    <small>Connecting to...<br/>{selectedUnit.name} AIA</small>
+                    {/* Render unit actions here */}
+                  </div>
+                ) : (<>
+                  <img src="/sorrel-logo.png" alt="Minimap" className="rounded-circle" width="100px"/><br/>
+                  <small>Sorrel AIA Team Communications</small>
+                  </>
+                )}
+
+              </div>
+              <div className="resource-counter">
+                Resources: {resources}
+              </div>
+              <div className="mt-3">
+                <button type="button" className="btn btn-outline-success m-1" >Objectives</button>
+                <button type="button" className="btn btn-outline-success  m-1" onClick={() => setShowWallet(true)}>Wallet</button>
+                <button type="button" className="btn btn-outline-success m-1" >Resources</button>
+                <Offcanvas className="dapp" show={showWallet} onHide={() => setShowWallet(false)} placement="end" title="Wallet">
+                  <Offcanvas.Header closeButton className="btn-close-white"></Offcanvas.Header>
+                  {loading && 
+                    <div className="spinner-container">
+                      <BounceLoader color="#109e77" size={100} />
+                    </div>
+                  }
+                  <iframe src="https://wallet.sorrelbanq.org/wallet" title="Wallet" style={{ width: '100%', height: '100%' }} onLoad={handleLoad} />
+                </Offcanvas>
+              </div>
+              <h6 className="mt-4">Team</h6>
+              <div className="unit-list row mt-2 mx-1">
+                {units.map(unit => (
+                  <div className="col-6 mt-3" key={unit.id} onClick={() => handleUnitClick(unit)}>
+                  <button className="btn btn-outline-secondary w-100">
+                    <img src={unit.image} alt={unit.name} className="rounded-circle" height="62"/>
+                    <br/><small className="text-xs">{unit.name}</small>
+                  </button>
+                  </div>
+                ))}
+              </div>
+
             </div>
-          }
-          <iframe src="https://wallet.sorrelbanq.org/wallet" title="Wallet" style={{ width: '100%', height: '100%' }} onLoad={handleLoad} />
-        </Offcanvas>
-      </div>
-      <h6 className="mt-4">Team</h6>
-      <div className="unit-list row mt-2 mx-1">
-        {units.map(unit => (
-          <div className="col-6 mt-3" key={unit.id} onClick={() => handleUnitClick(unit)}>
-          <button className="btn btn-outline-secondary w-100">
-            <img src={unit.image} alt={unit.name} className="rounded-circle" height="62"/>
-            <br/><small className="text-xs">{unit.name}</small>
-          </button>
-          </div>
-        ))}
-      </div>
 
-    </div>
+
+          </Offcanvas.Body>
+        </Offcanvas>
+
+
+
   );
 };
 

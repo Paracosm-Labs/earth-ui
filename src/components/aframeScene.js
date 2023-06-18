@@ -1,35 +1,58 @@
 import React from 'react';
 import 'aframe';
 import countriesData from './countriesData';
-import Hud from '../components/hud';
+import Hud from './hud';
 import { Offcanvas } from 'react-bootstrap';
+import GameController from './gameController';
 
 class AframeScene extends React.Component {
 
-  state = {
-    showHud: false
-  };
+state = {
+  showHud: false,
+  showController: false,
+  movingUp: false,
+  movingDown: false,
+  movingLeft: false,
+  movingRight: false
+};
 
 
-  componentDidUpdate(prevProps, prevState) {
-    // Check if the showHud state has changed
-    if (this.state.showHud !== prevState.showHud) {
-      // Get the VR button
-      const vrButton = document.querySelector('.a-enter-vr');
-      const arButton = document.querySelector('.a-enter-ar');
+  // componentDidUpdate(prevProps, prevState) {
+  //   // Check if the showHud state has changed
+  //   if (this.state.showHud !== prevState.showHud) {
+  //     // Get the VR button
+  //     const vrButton = document.querySelector('.a-enter-vr');
+  //     const arButton = document.querySelector('.a-enter-ar');
 
-      // If the off-canvas menu is open, hide the VR button
-      if (this.state.showHud) {
-        vrButton.style.display = 'none';
-        arButton.style.display = 'none';
-      }
-      // If the off-canvas menu is closed, show the VR button
-      else {
-        vrButton.style.display = 'block';
-        arButton.style.display = 'block';
-      }
+  //     // If the off-canvas menu is open, hide the VR button
+  //     if (this.state.showHud) {
+  //       vrButton.style.display = 'none';
+  //       arButton.style.display = 'none';
+  //     }
+  //     // If the off-canvas menu is closed, show the VR button
+  //     else {
+  //       vrButton.style.display = 'block';
+  //       arButton.style.display = 'block';
+  //     }
+  //   }
+  // }
+
+
+updateVrArButtonsDisplay = () => {
+  const vrButton = document.querySelector('.a-enter-vr-button');
+  const arButton = document.querySelector('.a-enter-ar-button');
+  if (vrButton && arButton) {
+    if (this.state.showController || this.state.showHud) {
+      vrButton.style.display = 'none';
+      arButton.style.display = 'none';
+    } else {
+      vrButton.style.display = 'block';
+      arButton.style.display = 'block';
     }
   }
+};
+
+
 
   handleNextLocation = () => {
       // Array of environment filenames
@@ -48,15 +71,65 @@ class AframeScene extends React.Component {
 
 
 
-  handleMenu = () => {
-    this.setState({ showHud: true });
-  }
+    handleHud = () => {
+      this.setState({ showHud: true }, this.updateVrArButtonsDisplay);
+    };
 
-  handleClose = () => {
-    this.setState({ showHud: false });
-  }
+    handleController = () => {
+      this.setState({ showController: true }, this.updateVrArButtonsDisplay);
+    };
+
+    handleHudHide = () => {
+      this.setState({ showHud: false }, this.updateVrArButtonsDisplay);
+    };
+
+    handleControllerHide = () => {
+      this.setState({ showController: false }, this.updateVrArButtonsDisplay);
+    };
+
+
+    handleUp = () => {
+      if (this.state.movingUp) {
+        const position = this.rig.object3D.position;
+        position.z -= 1;
+        this.rig.object3D.position.set(position.x, position.y, position.z);
+        requestAnimationFrame(this.handleUp);
+      }
+    };
+
+    handleDown = () => {
+      if (this.state.movingDown) {
+        const position = this.rig.object3D.position;
+        position.z += 1;
+        this.rig.object3D.position.set(position.x, position.y, position.z);
+        requestAnimationFrame(this.handleDown);
+      }
+    };
+
+    handleLeft = () => {
+      if (this.state.movingLeft) {
+        const position = this.rig.object3D.position;
+        position.x -= 1;
+        this.rig.object3D.position.set(position.x, position.y, position.z);
+        requestAnimationFrame(this.handleLeft);
+      }
+    };
+
+    handleRight = () => {
+      if (this.state.movingRight) {
+        const position = this.rig.object3D.position;
+        position.x += 3;
+        this.rig.object3D.position.set(position.x, position.y, position.z);
+        requestAnimationFrame(this.handleRight);
+      }
+    };
+
+
+
+
 
   render() {
+
     // Get the location from the URL parameters
     const urlParams = new URLSearchParams(window.location.search);
     const locationId = urlParams.get('location');
@@ -82,9 +155,16 @@ class AframeScene extends React.Component {
           {/* Add other elements to the scene here */}
 
 
-         {/* <a-entity id="rig" position="0 1.6 0" aframe-injected movement-controls="speed: 0.6" class="touch-controls"> */}
-          <a-entity id="rig" position="0 1.6 0">
-            <a-entity camera look-controls="touchEnabled: false" wasd-controls-enabled="false">
+          <a-entity
+            ref={ref => (this.rig = ref)}
+            id="rig"
+            position="0 1.6 0"
+            aframe-injected
+            movement-controls="speed: 0.6"
+            class="touch-controls"
+          >
+
+            <a-entity camera look-controls="touchEnabled: false" wasd-controls-enabled="true">
 
               <a-entity id="hud1" position="0 -1 -2"> 
                   {/* Add a welcome message */}
@@ -121,22 +201,29 @@ class AframeScene extends React.Component {
             </div>
             <div className="col text-center">
               <a href="/"><button className="btn btn-outline-secondary btn-lg m-3">Return to Orbital Station</button></a>
+              <button onClick={this.handleController} className="btn btn-outline-secondary btn-lg m-3">Controller</button>
+
+              
+
             </div>
             <div className="col ">
-              <button onClick={this.handleMenu} className="btn btn-outline-secondary btn-lg m-3">Menu</button>
+              <button onClick={this.handleHud} className="btn btn-outline-secondary btn-lg m-3">Menu</button>
             </div>
           </div>
         </div>
       </div>
+        
+        <Hud show={this.state.showHud} onHide={this.handleHudHide} />
 
-        <Offcanvas className="offcanvas-hud" show={this.state.showHud} onHide={this.handleClose} placement="end">
-          <Offcanvas.Header closeButton className="btn-close-white">
-            {/* <Offcanvas.Title>Hud</Offcanvas.Title> */}
-          </Offcanvas.Header>
-          <Offcanvas.Body>
-            <Hud />
-          </Offcanvas.Body>
-        </Offcanvas>
+        <GameController
+          show={this.state.showController}
+          onHide={this.handleControllerHide}
+          onUp={this.handleUp}
+          onDown={this.handleDown}
+          onLeft={this.handleLeft}
+          onRight={this.handleRight}
+        />
+      
 
       </div>
     );
