@@ -16,6 +16,7 @@ const Hud = () => {
   const [selectedUnit, setSelectedUnit] = useState(null);
   const [showWallet, setShowWallet] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Simulate resource gathering
   useEffect(() => {
@@ -26,8 +27,10 @@ const Hud = () => {
   }, []);
 
 
+
   const handleUnitClick = async (unit) => {
     setSelectedUnit(unit);
+    setIsLoading(true);
 
     // Create a new audio object
     const audio = new Audio(`/audio/${unit.name.toLowerCase()}.mp3`);
@@ -36,10 +39,10 @@ const Hud = () => {
       // Try to play the audio file
       await audio.play();
     } catch (error) {
-      // If an error occurs, show an alert
-      alert(`${unit.name} is not available at the moment. Please try again later...`);
+      // If an error occurs, show an alert and stop loading
+      alert(`${unit.name} is not available at the moment.`);
+      setIsLoading(false);
     }
-
   };
 
 
@@ -51,7 +54,7 @@ const Hud = () => {
     <div className="hud text-center mx-1 h-100">
       <div className="minimap mt-1 p-5 pt-1">
         
-        {selectedUnit ? (
+        {selectedUnit && isLoading ? (
           <div className="m-auto">
             <ScaleLoader color="#109e77" size={80} /><br/>
             <small>Connecting to...<br/>{selectedUnit.name} AIA</small>
