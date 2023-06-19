@@ -50,7 +50,7 @@ const Hud = ({show, onHide}) => {
     setLoading(false);
   };
 
-  return (
+  return (<>
 
         <Offcanvas className="offcanvas-hud" show={show} onHide={onHide} placement="end" backdrop={false}>
           <Offcanvas.Header closeButton className="btn-close-white">
@@ -81,15 +81,6 @@ const Hud = ({show, onHide}) => {
                 <button type="button" className="btn btn-outline-success m-1" >Objectives</button>
                 <button type="button" className="btn btn-outline-success  m-1" onClick={() => setShowWallet(true)}>Wallet</button>
                 <button type="button" className="btn btn-outline-success m-1" >Resources</button>
-                <Offcanvas className="dapp" show={showWallet} onHide={() => setShowWallet(false)} placement="end" title="Wallet">
-                  <Offcanvas.Header closeButton className="btn-close-white"></Offcanvas.Header>
-                  {loading && 
-                    <div className="spinner-container">
-                      <BounceLoader color="#109e77" size={100} />
-                    </div>
-                  }
-                  <iframe src="https://wallet.sorrelbanq.org/wallet" title="Wallet" style={{ width: '100%', height: '100%' }} onLoad={handleLoad} />
-                </Offcanvas>
               </div>
               <h6 className="mt-4">Team</h6>
               <div className="unit-list row mt-2 mx-1">
@@ -109,8 +100,17 @@ const Hud = ({show, onHide}) => {
           </Offcanvas.Body>
         </Offcanvas>
 
+       <Offcanvas className="dapp" show={showWallet} onHide={() => setShowWallet(false)} placement="end" title="Wallet" backdrop={false}>
+            <Offcanvas.Header closeButton className="btn-close-white"></Offcanvas.Header>
+            {loading && 
+              <div className="spinner-container">
+                <BounceLoader color="#f28144" size={100} />
+              </div>
+            }
+            <iframe src="https://wallet.sorrelbanq.org/wallet" title="Wallet" style={{ width: '100%', height: '100%' }} onLoad={handleLoad} />
+          </Offcanvas>
 
-
+</>
   );
 };
 

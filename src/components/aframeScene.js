@@ -1,11 +1,11 @@
-import React from 'react';
+/* global AFRAME */
+import React, {Component} from 'react';
 import 'aframe';
 import countriesData from './countriesData';
 import Hud from './hud';
-import { Offcanvas } from 'react-bootstrap';
 import GameController from './gameController';
 
-class AframeScene extends React.Component {
+class AframeScene extends Component {
 
 state = {
   showHud: false,
@@ -17,25 +17,19 @@ state = {
 };
 
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   // Check if the showHud state has changed
-  //   if (this.state.showHud !== prevState.showHud) {
-  //     // Get the VR button
-  //     const vrButton = document.querySelector('.a-enter-vr');
-  //     const arButton = document.querySelector('.a-enter-ar');
+  componentDidMount() {
 
-  //     // If the off-canvas menu is open, hide the VR button
-  //     if (this.state.showHud) {
-  //       vrButton.style.display = 'none';
-  //       arButton.style.display = 'none';
-  //     }
-  //     // If the off-canvas menu is closed, show the VR button
-  //     else {
-  //       vrButton.style.display = 'block';
-  //       arButton.style.display = 'block';
-  //     }
-  //   }
-  // }
+    if (!AFRAME.components.hud) {
+      AFRAME.registerComponent('hud', {
+        dependencies: ['material'],
+        init: function () {
+          this.el.components.material.material.depthTest = false;
+          this.el.object3D.renderOrder = 100;
+        }
+      });
+    }
+
+  }
 
 
 updateVrArButtonsDisplay = () => {
@@ -88,40 +82,22 @@ updateVrArButtonsDisplay = () => {
     };
 
 
+
     handleUp = () => {
-      if (this.state.movingUp) {
-        const position = this.rig.object3D.position;
-        position.z -= 1;
-        this.rig.object3D.position.set(position.x, position.y, position.z);
-        requestAnimationFrame(this.handleUp);
-      }
+
     };
 
     handleDown = () => {
-      if (this.state.movingDown) {
-        const position = this.rig.object3D.position;
-        position.z += 1;
-        this.rig.object3D.position.set(position.x, position.y, position.z);
-        requestAnimationFrame(this.handleDown);
-      }
+
     };
 
     handleLeft = () => {
-      if (this.state.movingLeft) {
-        const position = this.rig.object3D.position;
-        position.x -= 1;
-        this.rig.object3D.position.set(position.x, position.y, position.z);
-        requestAnimationFrame(this.handleLeft);
-      }
+
     };
 
     handleRight = () => {
-      if (this.state.movingRight) {
-        const position = this.rig.object3D.position;
-        position.x += 3;
-        this.rig.object3D.position.set(position.x, position.y, position.z);
-        requestAnimationFrame(this.handleRight);
-      }
+
+
     };
 
 
@@ -141,54 +117,53 @@ updateVrArButtonsDisplay = () => {
     const imageUrl = `/environments/${locationId}.jpg`;
 
 
-
     return (
+
+
     <div className="game">
       <div className="row m-0">
         <div className="col-12 m-auto text-center window">
-          <a-scene embedded inspector="url: https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js">
+          <a-scene embedded inspector="url: https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js"
+          >
           <a-assets>
             <img id="skyTexture" src={imageUrl} />
           </a-assets>
-          <a-sky src="#skyTexture" animation="property: rotation; to: 0 360 0; loop: true; dur: 300000"></a-sky>
 
+
+          <a-sky id="skybox" src="#skyTexture" animation="property: rotation; to: 0 360 0; loop: true; dur: 300000"></a-sky>
           {/* Add other elements to the scene here */}
 
-
           <a-entity
-            ref={ref => (this.rig = ref)}
             id="rig"
             position="0 1.6 0"
             aframe-injected
-            movement-controls="speed: 0.6"
+            movement-controls="speed: 0.2"
             class="touch-controls"
           >
 
-            <a-entity camera look-controls="touchEnabled: false" wasd-controls-enabled="true">
 
-              <a-entity id="hud1" position="0 -1 -2"> 
-                  {/* Add a welcome message */}
-                  <a-text
-                    value={`Welcome to ${location ? location.label : 'Unknown'}`}
-                    position="0 2.5 -1"
-                    align="center"
-                    color="#323232"
-                  ></a-text>
-                  
-                  <a-entity id="unit-list" position="7 -1 -2">
-                    <a-text value="Resources: 30000" position="-1.5 4 0"></a-text>
+          <a-camera>
+            <a-plane 
+              position="0 0 -0.5" width="0.51" height="0.51" color="#CCC" 
+              material="color: purple; opacity: 0.3" hud shadow>
+            </a-plane>
+            <a-text
+              value={`Welcome to ${location ? location.label : 'Unknown'}`}
+              position="0 0.8 -2"
+              align="center"
+              material="color: #323232;"
+            ></a-text>
+          </a-camera>
 
-                    <a-image src="/img/alex.jpg" position="0 2 0" event-set__click="_event: click; "></a-image>
-                    <a-text value="Growth & Sustainability" position="-1.5 0.6 0"></a-text>
-                    <a-image src="/img/javier.jpg" position="0 3 0" event-set__click="_event: click; "></a-image>
-                    <a-text value="Media & Entertainment" position="-1.5 1 0"></a-text>
-                    {/* Add more units here */}
-                  </a-entity>
-                
-              </a-entity>
-            </a-entity>
+          <a-entity position="0 0 -6">
+            <a-box position="-1 0 0" color="#4CC3D9"></a-box>
+            <a-sphere position="0 1.25 -1" radius="1.25" color="#1F2D5E" shadow></a-sphere>
+            <a-cylinder position="1 0.2 0" radius="0.5" height="0.5" color="#3FC65D" shadow></a-cylinder>
+            <a-cone position="0 5 -6" radius-bottom="1" radius-top="0" height="2" color="#3BC8A4" shadow></a-cone>
+            <a-plane position="0 0 -1" rotation="-90 0 0" width="4" height="4" color="#eeeeee" shadow></a-plane>
+          </a-entity>      
+
           </a-entity>
-
 
           </a-scene>
           {/* Add a link back to the globe */}
@@ -202,9 +177,6 @@ updateVrArButtonsDisplay = () => {
             <div className="col text-center">
               <a href="/"><button className="btn btn-outline-secondary btn-lg m-3">Return to Orbital Station</button></a>
               <button onClick={this.handleController} className="btn btn-outline-secondary btn-lg m-3 d-none">Controller</button>
-
-              
-
             </div>
             <div className="col ">
               <button onClick={this.handleHud} className="btn btn-outline-secondary btn-lg m-3">Menu</button>

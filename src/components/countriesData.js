@@ -25,6 +25,7 @@ const countriesData = [
   { id: '19', position: "-9.1427, 38.7223", label: 'Portugal', logo:'/gttd.png' },
   { id: '20', position: "51.5310, 25.2854", label: 'Qatar', logo:'/gttd.png' },
   { id: '21', position: "85.3240, 27.7172", label: 'Nepal', logo:'/gttd.png' },
+  { id: '214', position: "85.3240, 27.7172", label: 'Nepal', logo:'/gttd.png' },
   { id: '22', position: "106.8456, -6.2088", label: 'Indonesia', logo:'/gttd.png' },
   { id: '23', position: "103.8198, 1.3521", label: 'Singapore', logo:'/gttd.png' },
   { id: '24', position: "44.7833, 41.7151", label: 'Georgia', logo:'/gttd.png' },

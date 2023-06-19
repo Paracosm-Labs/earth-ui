@@ -58,7 +58,7 @@ min-height: 600px;
 
 .game .window {height:700px;}
 
-.dapp {width: 430px;}
+.dapp {width: 450px;}
 
 .offcanvas-hud, .hud, .dapp.offcanvas {background-color: #19191a;}
 
@@ -76,6 +76,7 @@ min-height: 600px;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  z-index: 1000;
 }
 
 .game .controller,  .footer{
